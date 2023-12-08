@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html,
+        body,
+        .main {
+            width: 100%;
+            height: 100%;
+        }
+
+        #play {
+            height: 95%;
+        }
+    </style>
+    
+    <title>南~海~归~墟</title>
+</head>
+
+<body onload="onload()" class="bg-gray-100">
+    <div class="main flex items-center justify-center h-screen">
+        <form class="main w-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="flex items-center mb-4">
+                <div class="w-1/2 mr-3">
+                    <select name="jk" id="jk"
+                        class="block appearance-none w-full bg-white border border-gray-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500">
+                        <option value="ddsg">选择集数(ddsg)</option>
+                    </select>
+                </div>
+                <!-- <div class="w-1/2 ml-3">
+          <input type="text" name="vipurl" id="vipurl" class="w-full bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-3 px-4 block appearance-none leading-normal" placeholder="输入视频链接">
+        </div> -->
+                <div class="ml-3">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button"
+                        onclick="onPlay()">播放</button>
+                    <!-- <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="button" onclick="onClear()">清除</button> -->
+                </div>
+            </div>
+            <iframe src="" name="play" id="play" class="w-full" frameborder="0" scrolling="no"
+                allowfullscreen="true"></iframe>
+        </form>
+    </div>
+    <!-- 弹窗外部容器 -->
+    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50" id="modal-container">
+        <!-- 弹窗内部容器 -->
+        <div class="bg-white p-8 rounded shadow-2xl">
+            <h2 class="text-xl font-bold mb-4">说明提示--ddsg</h2>
+            <p class="mb-4">本程序只用于交流学习，不做他用，与开发者无关</p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+                onclick="closeModal()">关闭提示</button>
+        </div>
+    </div>
+    <script LANGUAGE="JavaScript">
+        function openModal() {
+            document.getElementById('modal-container').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-container').classList.add('hidden');
+        }
+        function onload() {
+            openModal();
+            var base_url = "https:" + "//v.q" + "q.co" + "m" + "/x/cover" + "/mzc00200tl9nvn9" + "/";
+            var url_mappling = [
+                { label: "第1集", value: base_url + "j0047a185to.html" },
+                { label: "第2集", value: base_url + "r00474me0rl.html" },
+                { label: "第3集", value: base_url + "d0047rwszta.html" },
+                { label: "第4集", value: base_url + "b00479iv2l9.html" },
+                { label: "第5集", value: base_url + "p0047ihva05.html" },
+                { label: "第6集", value: base_url + "o0047g0p3gp.html" },
+                { label: "第7集", value: base_url + "r0047mdaqlg.html" },
+                { label: "第8集", value: base_url + "j004791zjzj.html" },
+                { label: "第9集", value: base_url + "r0047nzoo7a.html" },
+                { label: "第10集", value: base_url + "l00474r9uqz.html" },
+                { label: "第11集", value: base_url + "y0047fe4zj5.html" },
+                { label: "第12集", value: base_url + "f0047desan9.html" },
+                { label: "第13集", value: base_url + "s0047mjs9yz.html" },
+                { label: "第14集", value: base_url + "x0047lfb41h.html" },
+                { label: "第15集", value: base_url + "p00478jn3c2.html" },
+                { label: "第16集", value: base_url + "w0047sjm5q5.html" }
+            ];
+            var v_select = document.getElementById("jk");
+            for (var i = 0, len = url_mappling.length; i < len; i++) {
+                var v_option = document.createElement("option");
+                v_select.options.add(v_option);
+                v_option.innerHTML = url_mappling[i]["label"];
+                v_option.value = url_mappling[i]["value"];
+            }
+
+        }
+        function fnChange() {
+        }
+        function onClear() {
+            document.getElementById("vipurl").value = "";
+        }
+        function onPlay() {
+            var oJK = document.getElementById("jk");
+            var infc = "https:" + "//jx.xy" + "flv.cc/" + "?url=";
+            var sVipUrl = oJK.options[oJK.selectedIndex].value;
+            if (sVipUrl == "ddsg") {
+                alert("选择集数再点击播放");
+                return 0
+            }
+            var oWin = document.getElementById("play");
+            if (sVipUrl.length > 0) {
+                oWin.src = infc + sVipUrl;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
