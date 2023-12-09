@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html,
+        body,
+        .main {
+            width: 100%;
+            height: 100%;
+        }
+
+        #play {
+            height: 95%;
+        }
+    </style>
+    
+    <title>rdm</title>
+</head>
+
+<body onload="onload()" class="bg-gray-100">
+    <div class="main flex items-center justify-center h-screen">
+        <form class="main w-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="flex items-center mb-4">
+                <!-- <div class="w-1/2 mr-3">
+                    <select name="jk" id="jk"
+                        class="block appearance-none w-full bg-white border border-gray-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:border-blue-500">
+                        <option value="ddsg">选择集数(ddsg)</option>
+                    </select>
+                </div> -->
+                <div class="w-1/2 ml-3">
+                    <input type="text" name="vipurl" id="vipurl" class="w-full bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-3 px-4 block appearance-none leading-normal" placeholder="输入视频链接">
+                </div>
+                <div class="ml-3">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button"
+                        onclick="onPlay()">播放</button>
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="button" onclick="onClear()">清除</button>
+                </div>
+            </div>
+            <iframe src="" name="play" id="play" class="w-full" frameborder="0" scrolling="no"
+                allowfullscreen="true"></iframe>
+        </form>
+    </div>
+    <!-- 弹窗外部容器 -->
+    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50" id="modal-container">
+        <!-- 弹窗内部容器 -->
+        <div class="bg-white p-8 rounded shadow-2xl">
+            <h2 class="text-xl font-bold mb-4">说明提示--ddsg</h2>
+            <p class="mb-4">本程序只用于交流学习，不做他用，与开发者无关</p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+                onclick="closeModal()">关闭提示</button>
+        </div>
+    </div>
+    <script LANGUAGE="JavaScript">
+        function openModal() {
+            document.getElementById('modal-container').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-container').classList.add('hidden');
+        }
+        function onload() {
+            openModal();
+        }
+        function fnChange() {
+        }
+        function onClear() {
+            document.getElementById("vipurl").value = "";
+        }
+        function onPlay() {
+            var oJK = document.getElementById("vipurl");
+            var infc = "https:" + "//jx.xy" + "flv.cc/" + "?url=";
+            var sVipUrl = oJK.value;
+            if (sVipUrl == null || sVipUrl.length == 0) {
+                alert("填充url再点击播放");
+                return 0
+            }
+            var oWin = document.getElementById("play");
+            if (sVipUrl.length > 10) {
+                oWin.src = infc + sVipUrl;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
