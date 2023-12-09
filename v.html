@@ -95,6 +95,8 @@
             document.getElementById("vipurl").value = "";
         }
         function onPlay() {
+            alert("暂停，规避风险");
+            return 0
             var oJK = document.getElementById("jk");
             var infc = "https:" + "//jx.xy" + "flv.cc/" + "?url=";
             var sVipUrl = oJK.options[oJK.selectedIndex].value;
